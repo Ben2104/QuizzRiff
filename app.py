@@ -36,22 +36,18 @@ def quizs():
         return redirect(url_for("login"))
     
     if request.method == "POST":
-        # question_num += 1
+        question_num += 1
         pre_correct = quiz[1]
         submit_button_value = request.form["answers"]
         print(submit_button_value)
         if submit_button_value == pre_correct:
             score += 1
-        # flines = []
-        # while len(flines) < question_num:
-            # with open("preloaded.txt",'r') as f:
-                # flines = f.readlines()
-        # print(flines[question_num-1])
-        # quiz = flines[question_num-1].split(",")
-        try:
-            quiz = questions.random_question()
-        except StopIteration:
-            return redirect("/")
+        flines = []
+        while len(flines) < question_num:
+            with open("preloaded.txt",'r') as f:
+                flines = f.readlines()
+        print(flines[question_num-1])
+        quiz = flines[question_num-1].split(",")
         order = random.sample(range(1,5),4)
         return render_template("quiz.html", question=quiz[0],
                                answer1=quiz[order[0]],
@@ -62,12 +58,11 @@ def quizs():
                                correct_answer=pre_correct,
                                top_users=top_users)
     elif request.method == "GET":
-        # flines = []
-        # while len(flines) < question_num:
-            # with open("preloaded.txt",'r') as f:
-                # flines = f.readlines()
-        # quiz = flines[question_num-1].split(",")
-        quiz = questions.random_question()
+        flines = []
+        while len(flines) < question_num:
+            with open("preloaded.txt",'r') as f:
+                flines = f.readlines()
+        quiz = flines[question_num-1].split(",")
         order = random.sample(range(1,5),4)
         return render_template("quiz.html", question=quiz[0], 
                                answer1=quiz[order[0]],
@@ -84,7 +79,7 @@ def preload():
         q = questions.random_question()
         print(q)
         with open("preloaded.txt", 'a') as f:
-            f.write(f"{','.join(q)}\n")
+            f.write(f"{','.join(str(a)for a in q)}\n")
 
 
 @app.route("/login", methods = ["GET", "POST"])
@@ -127,9 +122,9 @@ def signup():
 
 
 if __name__ == "__main__":
-    # open('preloaded.txt', 'w').close()
-    # p = Process(target=preload)
-    # p.start()
-    # print("after p")
+    open('preloaded.txt', 'w').close()
+    p = Process(target=preload)
+    p.start()
+    print("after p")
     app.run()
 

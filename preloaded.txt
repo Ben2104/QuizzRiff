@@ -1,8 +1,10 @@
-What is the capital of Australia?,Canberra,Plymouth,Abuja,Tirana
-What is the capital of Dominica?,Roseau,Praia,Khartoum,Nouakchott
-What is the capital of Switzerland?,Bern,Guatemala,Vaiaku,Ankara
-What is the capital of Saudi Arabia?,Riyadh,Bamako,Athens,Lisbon
-What is the capital of Suriname?,Paramaribo,Port Moresby,Dublin,Suva
-What is the name of the 40 president of the United States?,Ronald Reagan,James Garfield,George Washington,Ulysses S. Grant
-What is the name of the 11 president of the United States?,James Knox Polk,James Knox Polk,Dwight D. Eisenhower,Calvin Coolidge
-What is the name of the 7 president of the United States?,Andrew Jackson,Joe Biden,John F. Kennedy,Benjamin Harrison
+What is the result of 196 + 299 = ?,495,472,546,522
+What is the capital of Bolivia, Plurinational State of?,La Paz,Seoul,Prague,Ulaanbaatar
+What is the result of 93 * 88 = ?,8184,8181,8178,8230
+What is the result of 600 + 679 = ?,1279,1266,1296,1274
+What is the capital of Botswana?,Gaborone,Managua,Helsinki,Vilnius
+What is the result of 927 + 403 = ?,1330,1332,1405,1319
+What is the result of 434 + 429 = ?,863,878,840,848
+What is the result of 270 - 424 = ?,-154,-187,-162,-199
+What is the result of 336 + 205 = ?,541,553,556,574
+What is the name of the 32 president of the United States?,Franklin D. Roosevelt,Benjamin Harrison,Gerald Ford,James Knox Polk

@@ -18,8 +18,8 @@ def random_question():
             return subtraction_problem()
         case 4:
             return division_problem()
-        # case 5:
-        #     return product_problem()
+        case 5:
+             return product_problem()
 
 
 def name_president() -> list:
@@ -75,6 +75,8 @@ def product_problem():
     a = random.randint(10,99)
     b = random.randint(10,99)
     c = a * b
-    options = range(c-75,c+75)[]
+    options = [i for i in range(c-75,c+75) if i!=0]
     question = f"What is the result of {a} * {b} = ?"
+    mults = random.sample(options,3)
+    return [question, c, mults[0], mults[1], mults[2]]
     
