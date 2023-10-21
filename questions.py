@@ -36,7 +36,7 @@ def name_capital():
         country = list(pycountry.countries)[answers[counter]].name
         questions.append(f"What is the capital of {country}?")
         ans.append(inquire(questions[counter]).split(","))
-    return [questions[0], ans[0][-2].lstrip(), ans[1][-2].lstrip(), ans[2][-2].lstrip(), ans[3][-2].lstrip()]
+    return [questions[0], ans[0][0].lstrip(), ans[1][0].lstrip(), ans[2][0].lstrip(), ans[3][0].lstrip()]
 
 """
 def product_problem():

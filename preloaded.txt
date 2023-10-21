@@ -1,0 +1,9 @@
+What is the capital of Curaçao?,Willemstad,Macau,(data not available),The Settlement
+What is the capital of Senegal?,Dakar,Noumea,San Salvador,Riyadh
+What is the name of the 35 president of the United States?,John F. Kennedy,Franklin Pierce,Grover Cleveland,William Howard Taft
+What is the capital of Grenada?,Saint Georges,Honiara,Accra,Astana
+What is the capital of Cabo Verde?,Praia,Gitega,Madrid,Kabul
+What is the capital of Sao Tome and Principe?,São Tomé,Dublin,Jamestown,Thimphu
+What is the capital of Trinidad and Tobago?,Port of Spain,Port Louis,Oslo,Windhoek
+What is the name of the 4 president of the United States?,James Madison,Ulysses S. Grant,Barack Obama,Franklin D. Roosevelt
+What is the name of the 39 president of the United States?,Jimmy Carter,Donald Trump,Richard Nixon,John F. Kennedy
