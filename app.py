@@ -118,7 +118,7 @@ def signup():
         cursor.execute("SELECT username FROM users WHERE username = ?", (submit_username,))
         user = cursor.fetchall()
         if len(user) == 0:
-            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (submit_username, submit_password))
+            cursor.execute("INSERT INTO users (username, password, score) VALUES (?, ?, ?)", (submit_username, submit_password, 0))
             conn.commit()
             global username
             username = submit_username
