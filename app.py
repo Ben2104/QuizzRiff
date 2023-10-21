@@ -77,9 +77,12 @@ def login():
         submit_password = request.form["password"]
         cursor.execute("SELECT username, password FROM users WHERE username = ?", (submit_username,))
         user = cursor.fetchall()
-        if submit_password == user[0][1]:
-            global logged
-            logged = True
+        if len(user) == 1:
+            if submit_password == user[0][1]:
+                global logged
+                logged = True
+        else:
+            return redirect(url_for("signup"))
         return redirect(url_for("quizs"))
 
 
@@ -98,9 +101,10 @@ def signup():
             conn.commit()
             logged = True
         else:
-            #user exist
-            return redirect("/signup")
+            return redirect(url_for("login"))
         return redirect(url_for("quizs"))
+
+
 
 
 if __name__ == "__main__":
