@@ -56,6 +56,20 @@ def logging():
     logged = True
     return redirect(url_for("quizs"))
 
+@app.route("/signup", methods = ["GET", "POST"])
+def signup():
+    if request.method == "GET":
+        return render_template("signup.html")
+    elif request.method == "POST":
+        return redirect(url_for("signing_up"))
+    
+
+@app.route("/signingup", methods=["GET", "POST"])
+def signing_up():
+    global logged
+    logged = True
+    return redirect(url_for("quizs"))
+
 if __name__ == "__main__":
     app.run()
 
