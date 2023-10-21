@@ -31,6 +31,9 @@ def quizs():
     cursor.execute("SELECT username, score FROM users LIMIT 5")
     top_users = cursor.fetchall()
     top_users = list(reversed(sorted(top_users, key=lambda x:x[1])))
+
+    if logged == False:
+        return redirect(url_for("login"))
     
     if request.method == "POST":
         question_num += 1
