@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from multiprocessing import Process, Value, Array
 import questions
 import random
 import sqlite3
 
 app = Flask(__name__)
+sock = Sock(app)
 
 global score
 score = 0
@@ -20,8 +21,6 @@ def quizs():
     global quiz
     global logged
     global question_num
-    #if logged == False:
-    #    return redirect(url_for("/loggin"))
     if request.method == "POST":
         question_num += 1
         pre_correct = quiz[1]
@@ -67,9 +66,32 @@ def preload():
             f.write(f"{','.join(q)}\n")
 
 
-@app.route("/login")
+@app.route("/login", methods = ["GET", "POST"])
 def login():
-    return render_template("login.html")
+    if request.method == "GET":
+        return render_template("login.html")
+    elif request.method == "POST":
+        return redirect(url_for("logging"))
+
+@app.route("/logging", methods = ["GET", "POST"])
+def logging():
+    global logged
+    logged = True
+    return redirect(url_for("quizs"))
+
+@app.route("/signup", methods = ["GET", "POST"])
+def signup():
+    if request.method == "GET":
+        return render_template("signup.html")
+    elif request.method == "POST":
+        return redirect(url_for("signing_up"))
+    
+
+@app.route("/signingup", methods=["GET", "POST"])
+def signing_up():
+    global logged
+    logged = True
+    return redirect(url_for("quizs"))
 
 if __name__ == "__main__":
     open('preloaded.txt', 'w').close()
@@ -77,3 +99,4 @@ if __name__ == "__main__":
     p.start()
     print("after p")
     app.run()
+

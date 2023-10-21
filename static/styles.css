@@ -5,11 +5,50 @@
     box-sizing: border-box;
 }
 body {
-    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    background: #0b166b;
 }
-.info{
-    color: #fff;
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    background-color: initial;
+    animation: blink 2s infinite;
 }
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1; /* fully visible */
+  }
+  50% {
+    opacity: 0; /* fully transparent */
+  }
+}
+
+@keyframes blink {
+    0%, 100% {
+      background-color: #0b166b; /* original color */
+    }
+    50% {
+      background-color: #15217d; /* color to blink to */
+    }
+}
+  
+  body {
+    animation: blink 4s infinite; /* 2 seconds duration, infinite loop */
+  }
+
+form {  
+    width: 50%; /* Reduced width */
+    margin: 100px auto 0; /* Auto margin centers the form horizontally */
+    border-bottom: 10px;
+    padding: 20px; /* Reduced padding */
+}
+
 .app {
     background: #fff;
     width: 90%;
@@ -17,13 +56,12 @@ body {
     margin: 100px auto 0;
     border-radius: 10px;
     padding: 30px;
-
 }
 
 h1 {
     text-align: center;
     font-weight: 25px;
-    color: #2274df;
+    color: #fff;
     font-weight: 600;
     border-bottom: 1px solid #333;
     padding-bottom: 25px;
@@ -33,33 +71,49 @@ h1 {
     padding: 20px 0;
 }
 
-.quiz h2 {
-    font-size: 16px;
-    color: #2274df;
+h2 {
+    text-align: center;
+    background-color: #fff;
+    font-size: 20px;
+    color: #0b166b;
     font-weight: 600;
 }
 
+h3 {
+    text-align: center;
+    background-color: #fff;
+    font-size: 20px;
+    color: #0b166b;
+    font-weight: 600;
+}
+
+
 .btn {
-    background: #ffffff;
+    background: #fff;
     color: #222;
-    font-weight: 500 bold;
+    font-weight: 600;
     width: 100%;
     border: 1px solid;
     padding: 10px;
     margin: 10px 0;
     text-align: left;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s;
+    text-align: center;
 }
 
-.btn:hover {
+.btn:hover:not([disabled]){
     background: #363434;
     color: #fff;
 }
 
+.btn:disabled {
+    cursor: no-drop;
+
+}
 #next-btn {
-    background: #2b4a44;
+    background: #0b166b;
     color: #fff;
     font-weight: 500;
     width: 150px;
@@ -69,4 +123,5 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
 }
+
 
