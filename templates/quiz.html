@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block quiz %}
+    <form action="/" method="POST">
+        <h1>Score: {{ score }}</h1>
+        <h2>Correct answer {{ correct_answer }}</h2>
+        <h3>{{ question }}</h3>
+            <input type="submit" value="{{ answer1 }}" name="answers" class="btn">
+            <input type="submit" value="{{ answer2 }}" name="answers" class="btn">
+            <input type="submit" value="{{ answer3 }}" name="answers" class="btn">
+            <input type="submit" value="{{ answer4 }}" name="answers" class="btn">
+    </form>
+{% endblock %}
