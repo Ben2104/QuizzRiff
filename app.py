@@ -14,6 +14,9 @@ quiz = []
 global logged
 logged = False
 
+conn =  sqlite3.connect("user_data.db", check_same_thread=False)
+cursor = conn.cursor()
+
 @app.route("/", methods = ["GET", "POST"])
 def quizs():
     global score
