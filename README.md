@@ -19,3 +19,5 @@ As education adapts to a digital world, educators need new engaging ways to teac
 * HTML
 * CSS
 * SQLite3
+* Flask
+* WolframAlpha API
