@@ -72,7 +72,9 @@ def division_problem():
     return [question, f"{div} r {r}", f"{divs[0]} r {rs[0]}", f"{divs[1]} r {rs[1]}", f"{divs[2]} r {rs[2]}"]
     
 def product_problem():
-    a = random.randint(10, 99)
+    a = random.randint(10,99)
     b = random.randint(10,99)
     c = a * b
+    options = range(c-75,c+75)[]
+    question = f"What is the result of {a} * {b} = ?"
     
