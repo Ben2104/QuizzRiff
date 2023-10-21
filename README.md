@@ -17,4 +17,5 @@ As education adapts to a digital world, educators need new engaging ways to teac
 #  Technical Used:  
 * Python
 * HTML
-* CSS 
+* CSS
+* SQLite3
