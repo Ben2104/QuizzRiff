@@ -2,7 +2,6 @@ from inquirer import inquire
 import random
 import pycountry
 
-app_id = "28KQW5-RVLGPL3KAH"
 
 
 
@@ -14,7 +13,7 @@ def name_president() -> list:
         question = f"What is the name of the {random_num} president of the United States?"
         if answers == 0:
             answer.append(question)
-        ans = inquire(app_id, question).split(" (")
+        ans = inquire(question).split(" (")
         answer.append(ans[0])
     return answer
 
@@ -27,6 +26,6 @@ def name_capital():
     for counter in range(4):
         country = list(pycountry.countries)[answers[counter]].name
         questions.append(f"What is the capital of {country}?")
-        ans.append(inquire(app_id, questions[counter]).split(","))
+        ans.append(inquire(questions[counter]).split(","))
     return [questions[0], ans[0][-2].lstrip(), ans[1][-2].lstrip(), ans[2][-2].lstrip(), ans[3][-2].lstrip()]
 
