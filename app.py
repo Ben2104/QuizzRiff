@@ -14,6 +14,9 @@ quiz = []
 global logged
 logged = False
 
+conn =  sqlite3.connect("user_data.db", check_same_thread=False)
+cursor = conn.cursor()
+
 @app.route("/", methods = ["GET", "POST"])
 def quizs():
     global score
@@ -70,27 +73,35 @@ def login():
     if request.method == "GET":
         return render_template("login.html")
     elif request.method == "POST":
-        return redirect(url_for("logging"))
+        submit_username = request.form["username"]
+        submit_password = request.form["password"]
+        cursor.execute("SELECT username, password FROM users WHERE username = ?", (submit_username,))
+        user = cursor.fetchall()
+        if submit_password == user[0][1]:
+            global logged
+            logged = True
+        return redirect(url_for("quizs"))
 
-@app.route("/logging", methods = ["GET", "POST"])
-def logging():
-    global logged
-    logged = True
-    return redirect(url_for("quizs"))
 
 @app.route("/signup", methods = ["GET", "POST"])
 def signup():
     if request.method == "GET":
         return render_template("signup.html")
     elif request.method == "POST":
-        return redirect(url_for("signing_up"))
-    
+        global logged
+        submit_username = request.form["username"].lower()
+        submit_password = request.form["password"]
+        cursor.execute("SELECT username FROM users WHERE username = ?", (submit_username,))
+        user = cursor.fetchall()
+        if len(user) == 0:
+            cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (submit_username, submit_password))
+            conn.commit()
+            logged = True
+        else:
+            #user exist
+            return redirect("/signup")
+        return redirect(url_for("quizs"))
 
-@app.route("/signingup", methods=["GET", "POST"])
-def signing_up():
-    global logged
-    logged = True
-    return redirect(url_for("quizs"))
 
 if __name__ == "__main__":
     open('preloaded.txt', 'w').close()
