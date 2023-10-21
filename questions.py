@@ -2,7 +2,7 @@ from inquirer import inquire
 import random
 import pycountry
 
-TOTAL = 6
+TOTAL = 5
 
 def random_question():
 
@@ -18,8 +18,6 @@ def random_question():
             return subtraction_problem()
         case 4:
             return division_problem()
-        # case 5:
-        #     return product_problem()
 
 
 def name_president() -> list:
@@ -70,11 +68,3 @@ def division_problem():
     rs = [random.randint(0,b-1) for i in range(3)]
     question = f"What is the result of {a} / {b} = ?"
     return [question, f"{div} r {r}", f"{divs[0]} r {rs[0]}", f"{divs[1]} r {rs[1]}", f"{divs[2]} r {rs[2]}"]
-    
-def product_problem():
-    a = random.randint(10,99)
-    b = random.randint(10,99)
-    c = a * b
-    options = range(c-75,c+75)[]
-    question = f"What is the result of {a} * {b} = ?"
-    
