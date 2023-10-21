@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz-App</title>
-    <link rel = "stylesheet" href = "styles.css">
-  
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
 </head>
 <body>
    <div class="app">
@@ -13,12 +13,13 @@
     <div class="quiz">
         <h2 id="question">Question goes here</h2>
         <div id="answer-button">
-            <button class="btn">Answer 1</button>
-            <button class="btn">Answer 2</button>
-            <button class="btn">Answer 3</button>
-            <button class="btn">Answer 4</button>
+            <button class="btn">{{ answer1 }}</button>
+            <button class="btn">{{ answer2 }}</button>
+            <button class="btn">{{ answer3 }}</button>
+            <button class="btn">{{ answer4 }}</button>
         </div>
     </div>
    </div>
+   
 </body>
 </html>
