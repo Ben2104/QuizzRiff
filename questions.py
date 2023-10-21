@@ -2,7 +2,16 @@ from inquirer import inquire
 import random
 import pycountry
 
+TOTAL = 2
 
+def random_question():
+
+    randomized = random.randint(1, 1000000) % TOTAL
+    match randomized:
+        case 0:
+            return name_president()
+        case 1:
+            return name_capital()
 
 
 def name_president() -> list:
