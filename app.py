@@ -13,6 +13,8 @@ global quiz
 quiz = []
 global logged
 logged = False
+global username
+global user_score
 
 global top_users
 top_users = list()
@@ -41,7 +43,8 @@ def quizs():
         submit_button_value = request.form["answers"]
         print(submit_button_value)
         if submit_button_value == pre_correct:
-            score += 1
+            cursor.execute("UPDATE users SET score = ? WHERE username = ?", ((user_score + 1), username))
+            conn.commit()
         # flines = []
         # while len(flines) < question_num:
             # with open("preloaded.txt",'r') as f:
@@ -58,7 +61,7 @@ def quizs():
                                answer2=quiz[order[1]],
                                answer3=quiz[order[2]],
                                answer4=quiz[order[3]],
-                               score=score,
+                               score=user_score,
                                correct_answer=pre_correct,
                                top_users=top_users)
     elif request.method == "GET":
@@ -94,12 +97,16 @@ def login():
     elif request.method == "POST":
         submit_username = request.form["username"]
         submit_password = request.form["password"]
-        cursor.execute("SELECT username, password FROM users WHERE username = ?", (submit_username,))
+        cursor.execute("SELECT username, password, score FROM users WHERE username = ?", (submit_username,))
         user = cursor.fetchall()
         if len(user) == 1:
             if submit_password == user[0][1]:
                 global logged
                 logged = True
+                global username
+                username = submit_username
+                global user_score
+                user_score = user[0][2]
         else:
             return redirect(url_for("signup"))
         return redirect(url_for("quizs"))
@@ -118,6 +125,8 @@ def signup():
         if len(user) == 0:
             cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (submit_username, submit_password))
             conn.commit()
+            global username
+            username = submit_username
             logged = True
         else:
             return redirect(url_for("login"))
