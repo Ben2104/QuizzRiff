@@ -18,8 +18,8 @@ def random_question():
             return subtraction_problem()
         case 4:
             return division_problem()
-        case 5:
-            return product_problem()
+        # case 5:
+        #     return product_problem()
 
 
 def name_president() -> list:

@@ -14,6 +14,9 @@ quiz = []
 global logged
 logged = False
 
+global top_users
+top_users = list()
+
 conn =  sqlite3.connect("user_data.db", check_same_thread=False)
 cursor = conn.cursor()
 
@@ -23,19 +26,32 @@ def quizs():
     global quiz
     global logged
     global question_num
+    global top_users
+    
+    cursor.execute("SELECT username, score FROM users LIMIT 5")
+    top_users = cursor.fetchall()
+    top_users = list(reversed(sorted(top_users, key=lambda x:x[1])))
+    
+    if logged == False:
+        return redirect(url_for("login"))
+    
     if request.method == "POST":
-        question_num += 1
+        # question_num += 1
         pre_correct = quiz[1]
         submit_button_value = request.form["answers"]
         print(submit_button_value)
         if submit_button_value == pre_correct:
             score += 1
-        flines = []
-        while len(flines) < question_num:
-            with open("preloaded.txt",'r') as f:
-                flines = f.readlines()
-        print(flines[question_num-1])
-        quiz = flines[question_num-1].split(",")
+        # flines = []
+        # while len(flines) < question_num:
+            # with open("preloaded.txt",'r') as f:
+                # flines = f.readlines()
+        # print(flines[question_num-1])
+        # quiz = flines[question_num-1].split(",")
+        try:
+            quiz = questions.random_question()
+        except StopIteration:
+            return redirect("/")
         order = random.sample(range(1,5),4)
         return render_template("quiz.html", question=quiz[0],
                                answer1=quiz[order[0]],
@@ -43,19 +59,22 @@ def quizs():
                                answer3=quiz[order[2]],
                                answer4=quiz[order[3]],
                                score=score,
-                               correct_answer=pre_correct)
+                               correct_answer=pre_correct,
+                               top_users=top_users)
     elif request.method == "GET":
-        flines = []
-        while len(flines) < question_num:
-            with open("preloaded.txt",'r') as f:
-                flines = f.readlines()
-        quiz = flines[question_num-1].split(",")
+        # flines = []
+        # while len(flines) < question_num:
+            # with open("preloaded.txt",'r') as f:
+                # flines = f.readlines()
+        # quiz = flines[question_num-1].split(",")
+        quiz = questions.random_question()
         order = random.sample(range(1,5),4)
         return render_template("quiz.html", question=quiz[0], 
                                answer1=quiz[order[0]],
                                answer2=quiz[order[1]],
                                answer3=quiz[order[2]],
-                               answer4=quiz[order[3]])
+                               answer4=quiz[order[3]],
+                               top_users=top_users)
 
 def preload():
     print("preloading")
@@ -77,9 +96,12 @@ def login():
         submit_password = request.form["password"]
         cursor.execute("SELECT username, password FROM users WHERE username = ?", (submit_username,))
         user = cursor.fetchall()
-        if submit_password == user[0][1]:
-            global logged
-            logged = True
+        if len(user) == 1:
+            if submit_password == user[0][1]:
+                global logged
+                logged = True
+        else:
+            return redirect(url_for("signup"))
         return redirect(url_for("quizs"))
 
 
@@ -98,15 +120,16 @@ def signup():
             conn.commit()
             logged = True
         else:
-            #user exist
-            return redirect("/signup")
+            return redirect(url_for("login"))
         return redirect(url_for("quizs"))
 
 
+
+
 if __name__ == "__main__":
-    open('preloaded.txt', 'w').close()
-    p = Process(target=preload)
-    p.start()
-    print("after p")
+    # open('preloaded.txt', 'w').close()
+    # p = Process(target=preload)
+    # p.start()
+    # print("after p")
     app.run()
 

@@ -10,4 +10,18 @@
             <input type="submit" value="{{ answer3 }}" name="answers" id="a3" class="btn">
             <input type="submit" value="{{ answer4 }}" name="answers" id="a4" class="btn">
     </form>
+    <table>
+        <tbody>
+            <tr>
+                <td class="main-username">username</td>
+                <td class="main-score">score</td>
+            </tr>
+            {% for user, score in top_users %}
+                <tr>
+                    <td class="username">{{ user }}</td>
+                    <td>{{ score }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
 {% endblock %}
