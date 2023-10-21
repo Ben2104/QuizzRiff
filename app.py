@@ -14,6 +14,9 @@ quiz = []
 global logged
 logged = False
 
+global top_users
+top_users = list()
+
 conn =  sqlite3.connect("user_data.db", check_same_thread=False)
 cursor = conn.cursor()
 
@@ -23,6 +26,12 @@ def quizs():
     global quiz
     global logged
     global question_num
+    global top_users
+    
+    cursor.execute("SELECT username, score FROM users LIMIT 5")
+    top_users = cursor.fetchall()
+    top_users = list(reversed(sorted(top_users, key=lambda x:x[1])))
+    
     if request.method == "POST":
         question_num += 1
         pre_correct = quiz[1]
@@ -43,7 +52,8 @@ def quizs():
                                answer3=quiz[order[2]],
                                answer4=quiz[order[3]],
                                score=score,
-                               correct_answer=pre_correct)
+                               correct_answer=pre_correct,
+                               top_users=top_users)
     elif request.method == "GET":
         flines = []
         while len(flines) < question_num:
@@ -55,7 +65,8 @@ def quizs():
                                answer1=quiz[order[0]],
                                answer2=quiz[order[1]],
                                answer3=quiz[order[2]],
-                               answer4=quiz[order[3]])
+                               answer4=quiz[order[3]],
+                               top_users=top_users)
 
 def preload():
     print("preloading")
