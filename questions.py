@@ -29,3 +29,33 @@ def name_capital():
         ans.append(inquire(questions[counter]).split(","))
     return [questions[0], ans[0][-2].lstrip(), ans[1][-2].lstrip(), ans[2][-2].lstrip(), ans[3][-2].lstrip()]
 
+def addition_problem():
+    a = random.randint(100, 999)
+    b = random.randint(100, 999)
+    c = a + b
+    question = f"What is the result of {a} + {b} = ?"
+    return [question, c, random.randint(c-68, c+25), random.randint(c-28, c+75),random.randint(c-48, c+35)]
+
+def subtraction_problem():
+    a = random.randint(100, 999)
+    b = random.randint(100, 999)
+    c = a - b
+    question = f"What is the result of {a} - {b} = ?"
+    return [question, c, random.randint(c-68, c+25), random.randint(c-28, c+75),random.randint(c-48, c+35)]
+
+def division_problem():
+    a = random.randint(50,999)
+    b = random.randint(2,15)
+    div = a//b
+    r = a%b
+    divs = random.sample(range(max(0,div-15),div+15),3)
+    rs = [random.randint(0,b-1) for i in range(3)]
+    question = f"What is the result of {a} / {b} = ?"
+    return [question, f"{div} r {r}", f"{divs[0]} r {rs[0]}", f"{divs[1]} r {rs[1]}", f"{divs[2]} r {rs[2]}"]
+    
+def product_problem():
+    a = random.randint(10, 99)
+    b = random.randint(10,99)
+    c = a * b
+    
+

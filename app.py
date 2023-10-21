@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
-from inquirer import inquire
+from flask import make_response
 import questions
+import random
 
 app = Flask(__name__)
 

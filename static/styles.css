@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #df4e22;
+    background: #2431a6;
 }
 
 .app {
@@ -14,16 +14,16 @@ body {
     background: #fff;
     width: 90%;
     max-width: 600px;
-    margin: 300px auto 0;
+    margin: 100px auto 0;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
 
 }
 
 .app h1 {
     text-align: center;
     font-weight: 25px;
-    color: #df4e22;
+    color: #2431a6;
     font-weight: 600;
     border-bottom: 1px solid #333;
     padding-bottom: 30px;
@@ -35,14 +35,14 @@ body {
 
 .quiz h2 {
     font-size: 16px;
-    color: #df4e22;
+    color: #2431a6;
     font-weight: 600;
 }
 
 .btn {
     background: #fff;
     color: #222;
-    font-weight: 500 bold;
+    font-weight: 500;
     width: 100%;
     border: 1px solid;
     padding: 10px;
@@ -54,12 +54,12 @@ body {
 }
 
 .btn:hover {
-    background: #363434;
+    background: rgb(67, 64, 64);
     color: #fff;
 }
 
 #next-btn {
-    background: #2b4a44;
+    background: #001e4d;
     color: #fff;
     font-weight: 500;
     width: 150px;
@@ -68,5 +68,6 @@ body {
     margin: 20px auto 0;
     border-radius: 4px;
     cursor: pointer;
-}
+    display: block;
+}   
 
