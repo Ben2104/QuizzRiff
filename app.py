@@ -5,7 +5,6 @@ import random
 import sqlite3
 
 app = Flask(__name__)
-sock = Sock(app)
 
 global score
 score = 0

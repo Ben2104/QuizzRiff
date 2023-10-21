@@ -26,10 +26,11 @@ def name_president() -> list:
         answer.append(ans[0])
     return answer
 
+ignore = [11,20,36,97,105,136,184,195,212,220]
 def name_capital():
     countryList = list(pycountry.countries)
-    print(len(countryList))
-    answers = random.sample(range(249),4)
+    x = [i for i in range(249) if i not in ignore]
+    answers = random.sample(x,4)
     questions = []
     ans = []
     for counter in range(4):
