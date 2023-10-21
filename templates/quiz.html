@@ -5,9 +5,18 @@
         <h1>Score: {{ score }}</h1>
         <h2>Correct answer {{ correct_answer }}</h2>
         <h3>{{ question }}</h3>
-            <input type="submit" value="{{ answer1 }}" name="answers" class="btn">
-            <input type="submit" value="{{ answer2 }}" name="answers" class="btn">
-            <input type="submit" value="{{ answer3 }}" name="answers" class="btn">
-            <input type="submit" value="{{ answer4 }}" name="answers" class="btn">
+            <input type="submit" value="{{ answer1 }}" name="answers" id="a1" class="btn">
+            <input type="submit" value="{{ answer2 }}" name="answers" id="a2" class="btn">
+            <input type="submit" value="{{ answer3 }}" name="answers" id="a3" class="btn">
+            <input type="submit" value="{{ answer4 }}" name="answers" id="a4" class="btn">
     </form>
+    <script>
+        const socket = new WebSocket('ws://' + location.host + '/echo');
+        socket.addEventListener('message', ev => {
+            document.getElementById('a1').textContent = ev[0];
+            document.getElementById('a2').textContent = ev[1];
+            document.getElementById('a3').textContent = ev[2];
+            document.getElementById('a4').textContent = ev[3];
+      });
+    </script>
 {% endblock %}

@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request
-from flask import make_response
+# from flask import Sock
 import questions
 import random
+import sqlite3
 
 app = Flask(__name__)
+#sock = Sock(app)
 
 global score
 score = 0
@@ -35,6 +37,28 @@ def quizs():
                                answer2=quiz[order[1]],
                                answer3=quiz[order[2]],
                                answer4=quiz[order[3]])
+
+"""
+@sock.route('/echo')
+def echo(sock):
+    global score
+    global quiz
+
+    pre_correct = quiz[1]
+    #submit_button_value = request.form["answers"]
+    submit_button_value = sock.receive()
+    if submit_button_value == pre_correct:
+        score += 1
+    quiz = questions.random_question()
+    order = random.sample(range(1,5),4)
+    return sock.send(question=quiz[0],
+                            answer1=quiz[order[0]],
+                            answer2=quiz[order[1]],
+                            answer3=quiz[order[2]],
+                            answer4=quiz[order[3]],
+                            score=score,
+                            correct_answer=pre_correct)
+"""
 
 if __name__ == "__main__":
     app.run()

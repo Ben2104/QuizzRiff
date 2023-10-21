@@ -5,9 +5,9 @@
     box-sizing: border-box;
 }
 body {
-    background: #df4e22;
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
 }
-.info {
+.info{
     color: #fff;
 }
 .app {
@@ -16,14 +16,14 @@ body {
     max-width: 600px;
     margin: 100px auto 0;
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px;
 
 }
 
 h1 {
     text-align: center;
     font-weight: 25px;
-    color: #df4e22;
+    color: #2274df;
     font-weight: 600;
     border-bottom: 1px solid #333;
     padding-bottom: 25px;
@@ -35,7 +35,7 @@ h1 {
 
 .quiz h2 {
     font-size: 16px;
-    color: #df4e22;
+    color: #2274df;
     font-weight: 600;
 }
 
