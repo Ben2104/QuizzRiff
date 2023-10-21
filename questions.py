@@ -2,7 +2,7 @@ from inquirer import inquire
 import random
 import pycountry
 
-TOTAL = 6
+TOTAL = 5
 
 def random_question():
 
