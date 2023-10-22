@@ -13,7 +13,7 @@ As education adapts to a digital world, educators need new engaging ways to teac
 * run:  pip install -r requirements.txt
 
 * run: python app.py
-
+* Or using the code space on github and run python app.py in the terminal
 #  Technical Used:  
 * Python
 * HTML
