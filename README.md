@@ -6,6 +6,9 @@
 * Alex Lee: Back-end, Database 
   
 # About
+<a href="[url](https://devpost.com/submit-to/16501-cal-hacks-9-0/manage/submissions)">CalHack 9.0 Submission</a>
+
+
 As education adapts to a digital world, educators need new engaging ways to teach a variety of topics. However, the process of designing quizzes is often time-consuming, taking away from teaching time. QuizRiff addresses this by automating the quiz generation process for each student, with a competitive score system to captivate learners.
 # How to run it:
 * intall latest version of python (https://www.python.org/downloads/)
