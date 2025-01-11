@@ -16,10 +16,19 @@
 As education adapts to a digital world, educators need new engaging ways to teach a variety of topics. However, the process of designing quizzes is often time-consuming, taking away from teaching time. QuizRiff addresses this by automating the quiz generation process for each student, with a competitive score system to captivate learners.
 # How to run it:
 * intall latest version of python (https://www.python.org/downloads/)
+* Turn on your terminal
+```
+  git clone [URL repository]
+```
 
-* run:  pip install -r requirements.txt
-
-* run: python app.py
+* install the requirements text file
+```
+  pip install -r requirements.txt
+```
+* Run the application
+```
+  python app.py
+```
 * Or using the code space on github and run python app.py in the terminal
 #  Technical Used:  
 * Python
