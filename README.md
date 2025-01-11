@@ -25,8 +25,11 @@ As education adapts to a digital world, educators need new engaging ways to teac
 ```
   pip install -r requirements.txt
 ```
-* Run the application
+or this command if you are a Macbook user
 ```
+  pip3 install -r requirements.txt
+```
+* Run the application
   python app.py
 ```
 * Or using the code space on github and run python app.py in the terminal
