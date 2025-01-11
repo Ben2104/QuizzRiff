@@ -30,7 +30,12 @@ or this command if you are a Macbook user
   pip3 install -r requirements.txt
 ```
 * Run the application
+```
   python app.py
+```
+or this command if you are a Macbook user
+```
+  python3 app.py
 ```
 * Or using the code space on github and run python app.py in the terminal
 #  Technical Used:  
